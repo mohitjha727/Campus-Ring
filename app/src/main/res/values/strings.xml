@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Campus Ring</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="stories">Stories</string>
+    <string name="post">Post</string>
+    <string name="campus">Campus</string>
+    <string name="misc">Misc</string>
+    <string name="name">Name</string>
+    <string name="time">time</string>
+    <string name="_100_likes">100+ likes</string>
+    <string name="search_music_travel_party">Search #music #travel #party</string>
+</resources>

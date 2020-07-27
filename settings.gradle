@@ -1,0 +1,2 @@
+rootProject.name='Campus Ring'
+include ':app'
