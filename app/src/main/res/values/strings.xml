@@ -11,4 +11,11 @@
     <string name="time">time</string>
     <string name="_100_likes">100+ likes</string>
     <string name="search_music_travel_party">Search #music #travel #party</string>
+    <string name="what_s_in_your_mind">What\'s in your mind?</string>
+    <string name="take_photo">Take photo</string>
+    <string name="choose_photo_from_gallary">Choose photo from gallary</string>
+    <string name="take_video">Take video</string>
+    <string name="choose_video_from_gallary">Choose video from gallary</string>
+    <string name="add_documents">Add documents</string>
+    
 </resources>
