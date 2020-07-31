@@ -1,8 +1,5 @@
 package com.webovix.campusring.ui.dashboard.adapters;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,9 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.webovix.campusring.R;
-import com.webovix.campusring.ui.dashboard.models.Story;
 import com.webovix.campusring.ui.dashboard.models.ImagesList;
+import com.webovix.campusring.ui.dashboard.models.Story;
 
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class OuterRVA extends RecyclerView.Adapter<OuterRVA.ViewHolder> {
     @Override
     public OuterRVA.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_story, parent, false);
+                .inflate(R.layout.dashboard_list_story, parent, false);
         return new ViewHolder(view, context);
     }
 

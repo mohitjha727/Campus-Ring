@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.webovix.campusring.R;
 import com.webovix.campusring.ui.dashboard.models.ImagesList;
 
@@ -27,7 +29,7 @@ public class InnerRVA extends RecyclerView.Adapter<InnerRVA.ViewHolder> {
     @Override
     public InnerRVA.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_image, parent, false);
+                .inflate(R.layout.dashboard_list_image, parent, false);
         return new ViewHolder(view, context);
     }
 
