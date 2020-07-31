@@ -19,9 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.dashboard.misc.StoryText"
-            android:theme="@style/storyText" />
     </application>
 
 </manifest>

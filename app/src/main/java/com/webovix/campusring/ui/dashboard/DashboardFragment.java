@@ -17,6 +17,8 @@ import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,8 +72,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
             Uri mImageUri = data.getData();
             InputStream imageStream = null;
+            assert mImageUri != null;
             try {
-                assert mImageUri != null;
                 imageStream = requireActivity().getContentResolver().openInputStream(mImageUri);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -79,7 +81,16 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             imageButton.setVisibility(View.VISIBLE);
             imageButton.setScaleType(ImageButton.ScaleType.FIT_XY);
             imageButton.setImageBitmap(BitmapFactory.decodeStream(imageStream));
-        }}
+        } else if (requestCode == REQUEST_VID_GET && resultCode == RESULT_OK) {
+            dialog.dismiss();
+            Uri VideoUri = data.getData();
+            assert VideoUri != null;
+            videoView.setVideoPath(VideoUri.toString());
+            videoView.setVisibility(View.VISIBLE);
+            videoView.start();
+        }
+
+    }
 
     private void prepareData() {
 
@@ -164,12 +175,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 createDilog();
                 break;
             case R.id.storyImageButton:
-
+                createDilog();
                 break;
 
             case R.id.addToStoryButton:
                 upload();
                 break;
+
             case R.id.imgButton:
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
@@ -178,6 +190,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 }
                 dialog.dismiss();
                 break;
+
             case R.id.vidButton:
                 Intent vidintent = new Intent(Intent.ACTION_GET_CONTENT);
                 vidintent.setType("video/*");
@@ -185,8 +198,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     startActivityForResult(vidintent, REQUEST_VID_GET);
                 }
                 break;
+
             case R.id.txtButton:
-                startActivity(new Intent(getActivity(), StoryText.class));
+                dialog.dismiss();
+                Fragment fragment = new StoryText();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
                 break;
             case R.id.closeButton:
                 dialog.dismiss();

@@ -12,7 +12,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -69,15 +69,21 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <include
+                            android:id="@+id/storyText"
                             layout="@layout/dashboard_story_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:visibility="gone" />
 
                         <VideoView
                             android:id="@+id/stroyVideo"
-                            android:layout_width="match_parent"
+                            android:layout_width="70dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
                             android:visibility="gone" />
 
                         <ImageButton
