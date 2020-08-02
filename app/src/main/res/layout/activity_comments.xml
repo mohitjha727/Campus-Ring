@@ -4,37 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/addpost"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/add"
-        android:background="#EC0A0A"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"/>
-
-    <EditText
-        android:id="@+id/searchedittxt"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_toLeftOf="@+id/searchbtn"
-        android:layout_margin="6dp"
-        android:background="@drawable/stroke_box"
-        android:paddingLeft="5dp"
-        android:textSize="18sp"
-        android:hint="@string/search_music_travel_party"/>
-
-    <ImageView
-        android:id="@+id/searchbtn"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_alignParentRight="true"
-        android:layout_margin="6dp"
-        android:src="@drawable/searchbtn"/>
+    tools:context=".CommentsActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -43,6 +13,7 @@
         android:layout_below="@+id/searchedittxt">
 
         <RelativeLayout
+            android:id="@+id/myrel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -87,23 +58,23 @@
                 android:textStyle="bold"
                 />
 
-        <ImageView
-            android:id="@+id/imgpost"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_margin="8dp"
-            android:background="#8E8888"
-            android:layout_below="@+id/userimg"
-            android:src="@drawable/forgn"
-            />
-        <ImageView
-            android:id="@+id/likebtn"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_below="@+id/imgpost"
-            android:layout_toLeftOf="@+id/dislikebtn"
-            android:layout_margin="10dp"
-            android:src="@drawable/likebtn"/>
+            <ImageView
+                android:id="@+id/imgpost"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="8dp"
+                android:background="#8E8888"
+                android:layout_below="@+id/userimg"
+                android:src="@drawable/forgn"
+                />
+            <ImageView
+                android:id="@+id/likebtn"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/imgpost"
+                android:layout_toLeftOf="@+id/dislikebtn"
+                android:layout_margin="10dp"
+                android:src="@drawable/likebtn"/>
 
             <ImageView
                 android:id="@+id/likebtnclr"
@@ -116,14 +87,14 @@
                 android:saveEnabled="false"
                 android:src="@drawable/likebtnclr"/>
 
-        <ImageView
-            android:id="@+id/dislikebtn"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_toLeftOf="@+id/cmntbtn"
-            android:layout_below="@+id/imgpost"
-            android:layout_margin="10dp"
-            android:src="@drawable/dislikebtn"/>
+            <ImageView
+                android:id="@+id/dislikebtn"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_toLeftOf="@+id/cmntbtn"
+                android:layout_below="@+id/imgpost"
+                android:layout_margin="10dp"
+                android:src="@drawable/dislikebtn"/>
 
             <ImageView
                 android:id="@+id/dislikebtnclr"
@@ -136,26 +107,53 @@
                 android:saveEnabled="false"
                 android:src="@drawable/dislikebtnclr" />
 
-        <ImageView
-            android:id="@+id/cmntbtn"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_below="@+id/imgpost"
-            android:layout_toLeftOf="@+id/sharebtn"
-            android:layout_margin="10dp"
-            android:src="@drawable/btncmnt"/>
+            <ImageView
+                android:id="@+id/cmntbtn"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/imgpost"
+                android:layout_toLeftOf="@+id/sharebtn"
+                android:layout_margin="10dp"
+                android:src="@drawable/btncmnt"/>
 
-        <ImageView
-            android:id="@+id/sharebtn"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_below="@+id/imgpost"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/sharebtn"/>
+            <ImageView
+                android:id="@+id/sharebtn"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/imgpost"
+                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/sharebtn"/>
+
+            <EditText
+                android:id="@+id/editcmnts"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@+id/sharebtn"
+                android:layout_toLeftOf="@+id/sharebtn"
+                android:padding="10dp"
+                android:background="@drawable/stroke_box"
+                android:hint="@string/write_your_comment_here"/>
+
+            <ImageView
+                android:id="@+id/cmntsendbtn"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:src="@drawable/cmntsendbtn"
+                android:layout_below="@+id/sharebtn"
+                android:layout_alignParentRight="true"/>
+
 
         </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
+
 
 
 </RelativeLayout>

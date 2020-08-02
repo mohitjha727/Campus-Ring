@@ -17,5 +17,7 @@
     <string name="take_video">Take video</string>
     <string name="choose_video_from_gallary">Choose video from gallary</string>
     <string name="add_documents">Add documents</string>
-    
+    <string name="see_the_added_video">See the added Video</string>
+    <string name="write_your_comment_here">Write your comment here</string>
+
 </resources>
