@@ -3,6 +3,8 @@ package com.webovix.campusring;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -62,11 +64,35 @@ public class CreatePostActivity extends AppCompatActivity {
         adddoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("application/msword,application/pdf");
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                // Only the system receives the ACTION_OPEN_DOCUMENT, so no need to test.
-                startActivityForResult(intent, REQUEST_CODE_DOC);
+                CharSequence options[]= new CharSequence[]
+                        {
+                                "PDF",
+                                "MS DOCS"
+                        };
+                android.app.AlertDialog.Builder builder=new AlertDialog.Builder(CreatePostActivity.this);
+                builder.setTitle("Select the Option:");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(which==0)
+                        {
+                            Intent intent = new Intent();
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            intent.setType("application/pdf");
+                            startActivityForResult(intent.createChooser(intent,"Select PDF file."),REQUEST_CODE_DOC);
+                        }
+                        if(which==1)
+                        {
+
+                            Intent intent1 = new Intent();
+                            intent1.setAction(Intent.ACTION_GET_CONTENT);
+                            intent1.setType("application/msword");
+                            startActivityForResult(intent1.createChooser(intent1,"Select PDF file."),REQUEST_CODE_DOC);
+                        }
+
+                    }
+                });
+                builder.show();
             }
         });
 
@@ -147,6 +173,19 @@ public class CreatePostActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Video added successfully",Toast.LENGTH_SHORT).show();
                 seevid.setVisibility(View.VISIBLE);
                 seevid.setEnabled(true);
+
+            }
+        }
+        if(resultCode== RESULT_OK &&  requestCode== REQUEST_CODE_DOC)
+        {
+
+            if (data != null) {
+
+                Uri fileUri = data.getData();
+                Toast.makeText(getApplicationContext(),"Document added successfully",Toast.LENGTH_SHORT).show();
+                seevid.setVisibility(View.VISIBLE);
+                seevid.setEnabled(false);
+                seevid.setText("Doc added successfully");
 
             }
         }
